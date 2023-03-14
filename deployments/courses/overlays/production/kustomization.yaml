@@ -1,0 +1,9 @@
+resources:
+- ../../base
+namePrefix: production-
+images:
+- name: courses123
+  newName: shaikkhajaibrahim/courses123
+  newTag: production
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
