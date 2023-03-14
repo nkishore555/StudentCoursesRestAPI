@@ -12,13 +12,13 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'docker image build -t kishorekrrish/student:6.0 .'
+                sh 'sudo docker image build -t kishorekrrish/student:6.0 .'
             }
         }
         stage('scan and push') {
             steps {
-                sh 'echo docker scan kishorekrrish/student:6.0'
-                sh 'docker image push kishorekrrish/student:6.0'
+                sh 'sudo echo docker scan kishorekrrish/student:6.0'
+                sh 'sudo docker image push kishorekrrish/student:6.0'
             }
         }
     }
