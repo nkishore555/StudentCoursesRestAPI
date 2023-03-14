@@ -1,18 +1,18 @@
 pipeline {
-    agent (label 'docker')
+    agent { label 'mynode' }
     trigger { 
-        pollSCM(* * * * *)
+        pollSCM('* * * * *')
         stages {
         stage('vcs') {
             steps {
                 git url : https://github.com/nkishore555/StudentCoursesRestAPI.git
-                    branch: develop 
+                    branch: master
             }
         }
         stage('build') {
             steps {
-                sh 'docker build -t kishorekrrish/student:3.0 .'
-                sh 'docker push kishorekrrish/student:3.0'
+                sh 'docker build -t kishorekrrish/student:5.0 .'
+                sh 'docker push kishorekrrish/student:5.0'
             }
         }
     }
