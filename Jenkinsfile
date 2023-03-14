@@ -1,20 +1,26 @@
 pipeline {
     agent { label 'mynode' }
-    trigger { 
+    triggers { 
         pollSCM('* * * * *')
-        stages {
+    }
+    stages {
         stage('vcs') {
             steps {
-                git url : 'https://github.com/nkishore555/StudentCoursesRestAPI.git'
-                    branch: 'master'
+                git url: 'https://github.com/nkishore555/StudentCoursesRestAPI.git',
+                    branch: 'develop'
             }
         }
         stage('build') {
             steps {
-                sh 'docker build -t kishorekrrish/student:5.0 .'
-                sh 'docker push kishorekrrish/student:5.0'
+                sh 'docker image build -t kishorekrrish/student:6.0 .'
+            }
+        }
+        stage('scan and push') {
+            steps {
+                sh 'echo docker scan kishorekrrish/student:6.0'
+                sh 'docker image push kishorekrrish/student:6.0'
             }
         }
     }
-    }
+
 }
