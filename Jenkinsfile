@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'mynode' }
+    agent { label 'aws' }
     triggers { 
         pollSCM('* * * * *')
     }
