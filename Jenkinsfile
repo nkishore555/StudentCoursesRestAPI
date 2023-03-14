@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'mynode' }
+    agent { label 'aws' }
     triggers { 
         pollSCM('* * * * *')
     }
@@ -12,13 +12,13 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'docker image build -t kishorekrrish/student:6.0 .'
+                sh 'docker image build -t kishorekrrish/student:10.0 .'
             }
         }
         stage('scan and push') {
             steps {
-                sh 'echo docker scan kishorekrrish/student:6.0'
-                sh 'docker image push kishorekrrish/student:6.0'
+                sh 'echo docker scan kishorekrrish/student:10.0'
+                sh 'docker image push kishorekrrish/student:10.0'
             }
         }
     }
